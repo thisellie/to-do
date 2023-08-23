@@ -1,5 +1,4 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
@@ -9,7 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    assetModuleFilename: 'assets/[name][ext]',
   },
   module: {
     rules: [
@@ -31,9 +30,6 @@ module.exports = {
     static: './dist',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: "thisellie's to-do",
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
