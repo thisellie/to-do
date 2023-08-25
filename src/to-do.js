@@ -1,16 +1,27 @@
+import { formatPrio } from './index'
+
 export let tasks = []
 
 export class todo {
+  // dueValue = () => {
+  //   const due = tasks[tasks.length - 1].due
+  //   const parse = parseISO(due)
+  //   return format(parse, 'MMMM d')
+  // }
+
   constructor(title, desc, due, prio) {
     this.title = title
     this.desc = desc
     this.due = due
+    // this.getDue(due)
     this.prio = prio
   }
+
   static addTask(title, desc, due, prio) {
     tasks.push(new todo(title, desc, due, prio))
     console.log(tasks)
   }
+
   static addDom() {
     const list = document.querySelector('section')
 
@@ -39,9 +50,10 @@ export class todo {
       tasks[tasks.length - 1].prio,
     ]
 
-    data.forEach(property => {
+    data.forEach((property, index) => {
       const desc = document.createElement('p')
       desc.textContent = property
+      if (index === 2) formatPrio(property, desc)
       details.append(desc)
     })
 
