@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>thisellie's to-do</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="bundle.js"></script>
+  <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <h1>Projects</h1>
+    <ul>
+    </ul>
+    <button id="add-project">Add Project</button>
+  </nav>
+  <main>
+    <header>
+      <h1>Tasks</h1>
+    </header>
+    <section>
+
+    </section>
+
+    <dialog id="add-dialog">
+      <form id="add-form" method="dialog">
+        <input type="text" name="title" id="title" placeholder="Add a task">
+        <textarea id="desc" name="desc" id="" cols="20" rows="10" placeholder="Add note"></textarea>
+        <input type="date" name="due" id="due">
+
+        <div id="priority">
+          <input type="radio" name="priority" id="high" value="High">
+          <label for="high">High</label>
+          <input type="radio" name="priority" id="medium" value="Medium" checked>
+          <label for="medium">Medium</label>
+          <input type="radio" name="priority" id="low" value="Low" ce>
+          <label for="low">Low</label>
+        </div>
+
+        <input type="submit" value="Add">
+        <button id="add-close">Close</button>
+      </form>
+    </dialog>
+
+    <dialog id="project-dialog">
+      <form id="project-form" method="dialog">
+        <input type="text">
+        <button>Add project</button>
+        <button id="close">Close</button>
+      </form>
+    </dialog>
+
+    <button id="add-button" type="button">Add a task</button>
+  </main>
+</body>
+
+</html>
