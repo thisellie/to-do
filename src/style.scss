@@ -3,97 +3,74 @@ $shade: rgb(28, 28, 28);
 $tint: rgb(41, 41, 41);
 
 $gray: rgb(54, 54, 54);
+$gray2: rgb(92, 92, 92);
 
 $secondary: rgb(115, 185, 231);
 
 $highlight: rgb(59, 59, 59);
-$light: rgb(245,245,245);
+$light: rgb(245, 245, 245);
 $light2: rgb(212, 212, 212);
 
-h1 {
+h1,
+p,
+input,
+label,
+a,
+button,
+textarea,
+li {
   color: $light;
-}
-
-dialog {
-  background-color: $primary;
-  border: none;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    input, textarea {
-      padding: 1em;
-      border: none;
-      background-color: $tint;
-      color: $light;
-    }
-
-    textarea {
-      resize: none;
-    }
-      
-    input#desc {
-      height: 300px;
-    }
-    
-    label {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: $tint;
-      color: $light;
-      cursor: pointer;
-      text-align: center;
-      user-select: none;
-    }
-    
-    input[type=radio] {
-      display: none;
-    }
-    
-    input[type=radio]:checked + label {
-      background-color: $highlight;
-      color: $light;
-    }
-    ::placeholder {
-      opacity: 1;
-    }
-    
-    :focus {
-      outline: 3px solid $highlight;
-    }
-
-    input[type=submit]:focus {
-      outline: 3px solid $highlight;
-    }
-    
-  }
-
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
   display: flex;
+
   nav {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
     background-color: $primary;
     width: 20vw;
-    h1{
-      padding-left: 1em;
+
+    h1 {
+      margin: 1em 0 0 0;
     }
+
     ul {
+      padding: 0;
       list-style: none;
-      a {
-        text-decoration: none;
-        height: 25px;
-        color: $light;
-        li {
-          font-size: large;
-        }
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      li {
+        border-radius: 3px;
+        padding: 0.5em;
+        font-size: large;
+      }
+
+      li:hover {
+        background-color: $gray;
       }
     }
+
+    button {
+      width: inherit;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 3em;
+      padding: 1em;
+      background-color: $gray;
+    }
+
+    button:hover {
+      background-color: $gray2;
+    }
   }
+
   main {
     padding: 0 3em;
     background-color: $shade;
@@ -119,7 +96,7 @@ body {
         display: flex;
         align-items: center;
         gap: 5px;
-        
+
         .styled-checkbox {
           appearance: none;
           width: 20px;
@@ -129,7 +106,7 @@ body {
           margin-right: 10px;
           cursor: pointer;
         }
-        
+
         .styled-checkbox:checked {
           background-color: #3498db;
           border-color: #3498db;
@@ -137,7 +114,6 @@ body {
 
         .label {
           .checkbox-label {
-            color: $light;
             cursor: pointer;
           }
         }
@@ -146,29 +122,116 @@ body {
           padding-top: 4px;
           display: flex;
           gap: 1em;
+
           p {
             margin: 0;
             color: $light2;
           }
+
           .low {
-            color: green
+            color: green;
           }
+
           .medium {
-            color: orange
+            color: orange;
           }
+
           .high {
             color: red;
           }
         }
       }
+
+      .task:hover {
+        background-color: $gray2;
+      }
     }
 
     #add-button {
-      margin-bottom: 1em;
+      margin-bottom: 3em;
       border: none;
+      border-radius: 3px;
       padding: 1em;
       background-color: $tint;
-      color: $light;
+    }
+
+    #add-button:hover {
+      background-color: rgb(79, 79, 79);
     }
   }
 }
+
+dialog {
+  background-color: $primary;
+  border: none;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    input,
+    textarea {
+      padding: 1em;
+      border: none;
+      background-color: $tint;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    input#desc {
+      height: 300px;
+    }
+
+    label {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: $tint;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+    }
+
+    input[type='radio'] {
+      display: none;
+    }
+
+    input[type='radio']:checked + label {
+      background-color: $highlight;
+    }
+    ::placeholder {
+      opacity: 1;
+    }
+
+    :focus {
+      outline: 3px solid $highlight;
+    }
+
+    input[type='submit'] {
+      padding: 0.5em;
+    }
+
+    input[type='submit']:focus {
+      outline: 3px solid $highlight;
+    }
+
+    button {
+      background-color: $tint;
+      border: none;
+      padding: 0.5em;
+    }
+  }
+}
+
+dialog#project-dialog {
+  form {
+    button {
+      background-color: $tint;
+      border: none;
+      padding: 0.5em;
+    }
+  }
+}
+
