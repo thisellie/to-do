@@ -7,6 +7,12 @@ const addDialog = document.getElementById('add-dialog')
 const addButton = document.getElementById('add-button')
 addButton.addEventListener('click', () => addDialog.showModal())
 
+const closeAdd = document.getElementById('add-close')
+closeAdd.addEventListener('click', () => {
+  event.preventDefault()
+  addDialog.close()
+})
+
 const addForm = document.getElementById('add-form')
 
 function formatDue() {
@@ -37,7 +43,6 @@ addForm.addEventListener('submit', event => {
   }
 
   todo.addTask(title, desc, due, priorityValue)
-  todo.addDom()
   addForm.reset()
   addDialog.close()
 })

@@ -1,28 +1,21 @@
-import { formatPrio } from './index'
-
-export let tasks = []
+import { projects } from './projects'
+import { formatPrio } from '.'
 
 export class todo {
-  // dueValue = () => {
-  //   const due = tasks[tasks.length - 1].due
-  //   const parse = parseISO(due)
-  //   return format(parse, 'MMMM d')
-  // }
-
   constructor(title, desc, due, prio) {
     this.title = title
     this.desc = desc
     this.due = due
-    // this.getDue(due)
     this.prio = prio
   }
 
   static addTask(title, desc, due, prio) {
-    tasks.push(new todo(title, desc, due, prio))
-    console.log(tasks)
+    projects.Default.push(new todo(title, desc, due, prio))
+    this.addDom(projects.Default)
   }
 
-  static addDom() {
+  static addDom(project) {
+    const index = project.length
     const list = document.querySelector('section')
 
     const container = document.createElement('div')
@@ -30,24 +23,24 @@ export class todo {
 
     const checkbox = document.createElement('input')
     checkbox.type = 'checkbox'
-    checkbox.id = `item-${tasks.length - 1}`
+    checkbox.id = `item-${index}`
     checkbox.classList.add('styled-checkbox')
 
     const label = document.createElement('div')
     label.classList.add('label')
 
     const title = document.createElement('label')
-    title.htmlFor = `item-${tasks.length}`
+    title.htmlFor = `item-${index}`
     title.classList.add('checkbox-label')
-    title.textContent = tasks[tasks.length - 1].title
+    title.textContent = project[index - 1].title
 
     const details = document.createElement('div')
     details.classList.add('details')
 
     const data = [
-      tasks[tasks.length - 1].desc,
-      tasks[tasks.length - 1].due,
-      tasks[tasks.length - 1].prio,
+      project[index - 1].desc,
+      project[index - 1].due,
+      project[index - 1].prio,
     ]
 
     data.forEach((property, index) => {
