@@ -1,5 +1,5 @@
-import { projects } from './projects'
 import { formatPrio } from '.'
+import { selected } from './projects'
 
 export class todo {
   constructor(title, desc, due, prio) {
@@ -10,12 +10,11 @@ export class todo {
   }
 
   static addTask(title, desc, due, prio) {
-    projects.Default.push(new todo(title, desc, due, prio))
-    this.addDom(projects.Default)
+    selected.push(new todo(title, desc, due, prio))
+    this.addDom(selected.at(-1), selected.length)
   }
 
-  static addDom(project) {
-    const index = project.length
+  static addDom(todo, index) {
     const list = document.querySelector('section')
 
     const container = document.createElement('div')
@@ -32,16 +31,12 @@ export class todo {
     const title = document.createElement('label')
     title.htmlFor = `item-${index}`
     title.classList.add('checkbox-label')
-    title.textContent = project[index - 1].title
+    title.textContent = todo.title
 
     const details = document.createElement('div')
     details.classList.add('details')
 
-    const data = [
-      project[index - 1].desc,
-      project[index - 1].due,
-      project[index - 1].prio,
-    ]
+    const data = [todo.desc, todo.due, todo.prio]
 
     data.forEach((property, index) => {
       const desc = document.createElement('p')
