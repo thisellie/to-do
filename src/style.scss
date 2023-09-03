@@ -1,7 +1,7 @@
 $primary: rgb(34, 34, 34);
 $shade: rgb(28, 28, 28);
 $tint: rgb(41, 41, 41);
-
+$hover: rgb(79, 79, 79);
 $gray: rgb(54, 54, 54);
 $gray2: rgb(92, 92, 92);
 
@@ -19,7 +19,44 @@ a,
 button,
 textarea,
 li {
+  user-select: none;
   color: $light;
+}
+
+h1 {
+  cursor: default;
+}
+
+li,
+button,
+input[type='submit'],
+input[type='date'] {
+  cursor: pointer;
+}
+
+button,
+input,
+textarea {
+  background-color: $tint;
+  border: none;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+button:hover,
+input[type='submit']:hover {
+  background-color: $hover;
+}
+
+input:focus-visible,
+button:focus-visible,
+textarea:focus-visible,
+input[type='submit']:focus-visible {
+  outline: 3px solid rgb(59, 59, 59);
+}
+
+input#desc {
+  height: 300px;
 }
 
 body {
@@ -62,11 +99,7 @@ body {
     }
 
     button {
-      width: inherit;
-      border: none;
-      border-radius: 5px;
       margin-bottom: 3em;
-      padding: 1em;
       background-color: $gray;
     }
 
@@ -102,6 +135,7 @@ body {
         gap: 5px;
 
         .styled-checkbox {
+          background-color: inherit;
           appearance: none;
           width: 20px;
           height: 20px;
@@ -112,8 +146,8 @@ body {
         }
 
         .styled-checkbox:checked {
-          background-color: #3498db;
-          border-color: #3498db;
+          background-color: $secondary;
+          border-color: $secondary;
         }
 
         .label {
@@ -128,6 +162,7 @@ body {
           gap: 1em;
 
           p {
+            cursor: default;
             margin: 0;
             color: $light2;
           }
@@ -153,14 +188,6 @@ body {
 
     #add-button {
       margin-bottom: 3em;
-      border: none;
-      border-radius: 3px;
-      padding: 1em;
-      background-color: $tint;
-    }
-
-    #add-button:hover {
-      background-color: rgb(79, 79, 79);
     }
   }
 }
@@ -169,72 +196,51 @@ dialog {
   background-color: $primary;
   border: none;
 
+  label {
+    border-radius: 3px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: $tint;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+  }
+
+  label:hover {
+    background-color: $hover;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  input[type='radio']:checked + label {
+    background-color: $secondary;
+  }
+
   form {
     display: flex;
     flex-direction: column;
     gap: 1em;
 
-    input,
-    textarea {
-      padding: 1em;
-      border: none;
-      background-color: $tint;
-    }
-
     textarea {
       resize: none;
     }
 
-    input#desc {
-      height: 300px;
-    }
-
-    label {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: $tint;
-      cursor: pointer;
-      text-align: center;
-      user-select: none;
-    }
-
-    input[type='radio'] {
-      display: none;
-    }
-
-    input[type='radio']:checked + label {
-      background-color: $highlight;
-    }
     ::placeholder {
       opacity: 1;
-    }
-
-    :focus {
-      outline: 3px solid $highlight;
     }
 
     input[type='submit'] {
       padding: 0.5em;
     }
 
-    input[type='submit']:focus {
-      outline: 3px solid $highlight;
-    }
-
     button {
-      background-color: $tint;
-      border: none;
       padding: 0.5em;
     }
-  }
-}
 
-dialog#project-dialog {
-  form {
-    button {
-      background-color: $tint;
-      border: none;
-      padding: 0.5em;
+    p {
+      margin: 0;
     }
   }
 }
