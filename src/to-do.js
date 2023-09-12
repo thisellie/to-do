@@ -1,6 +1,6 @@
 import { format, parse } from 'date-fns'
 import { priority, date } from '.'
-import { loadTodo, section, selected } from './projects'
+import { loadTodo, section, selected, updateStorage } from './projects'
 
 export class todo {
   constructor(title, desc, due, prio) {
@@ -53,6 +53,9 @@ export class todo {
     element.addEventListener('click', e => {
       const index = e.currentTarget.dataset.index
       if (e.target.type === 'checkbox') {
+        selected.splice(index, 1)
+        updateStorage()
+        loadTodo(selected)
       } else viewTask(selected[index], index)
     })
   }
@@ -139,6 +142,7 @@ function createDialog(object, index) {
     },
     Delete: () => {
       selected.splice(index, 1)
+      updateStorage()
       loadTodo(selected)
       dialog.close()
     },
