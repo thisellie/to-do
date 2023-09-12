@@ -2,7 +2,7 @@ import 'normalize.css'
 import './style.scss'
 import { todo } from './to-do'
 import { format, parseISO } from 'date-fns'
-import { loadTodo, selectTab, selected } from './projects'
+import { loadTodo, selectTab, selected, updateStorage } from './projects'
 
 const addDialog = document.getElementById('add-dialog')
 const addButton = document.getElementById('add-button')
@@ -25,6 +25,7 @@ addForm.addEventListener('submit', e => {
   const priorityValue = priority()
 
   todo.addTask(title, desc, due, priorityValue)
+  updateStorage()
   addForm.reset()
   addDialog.close()
 })
