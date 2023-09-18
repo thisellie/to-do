@@ -33,6 +33,10 @@ const initial = {
   ],
 }
 
+if (localStorage.length === 0) {
+  localStorage.setItem('todo', JSON.stringify(initial))
+}
+
 export let projects = JSON.parse(localStorage.getItem('todo'))
 export let selected = projects.Default
 export const section = document.querySelector('section')
@@ -41,10 +45,6 @@ const projectDialog = document.getElementById('project-dialog')
 const projectForm = document.getElementById('project-form')
 const openProject = document.getElementById('add-project')
 const closeProject = document.getElementById('close')
-
-if (localStorage.length === 0) {
-  localStorage.setItem('todo', JSON.stringify(initial))
-}
 
 for (const property in projects) {
   const li = document.createElement('li')
